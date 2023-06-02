@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Initialize countdown
+
 public class Rotation : MonoBehaviour
 {
+    [SerializeField] AudioClip _rotationSound;
     public Transform target;
     // Start is called before the first frame update
     void Start()

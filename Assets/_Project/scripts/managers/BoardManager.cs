@@ -46,6 +46,7 @@ public class BoardManager : MonoBehaviour
             ResetPlatforms();
             return;
         }
+        // initialize levels: Add one row after every completed level.
 
         _platforms = new List<IPlatform>();
         int blocksPerRow = 7;
@@ -59,13 +60,12 @@ public class BoardManager : MonoBehaviour
                 square.transform.localPosition = new Vector3(i * 3, y, startZ + i * 3);
                 _platforms.Add(square.GetComponentInChildren<IPlatform>());
             } 
-
             --blocksPerRow;
             startZ += 3;
             y += 3;   
         }        
     }
-
+    
     void ResetPlatforms()
     {
         if (UnFlippedPlatforms == _platforms.Count) return;
@@ -73,6 +73,5 @@ public class BoardManager : MonoBehaviour
         {
             platform.SetFlippedState(false);
         }
-    }
-           
+    }        
 }
