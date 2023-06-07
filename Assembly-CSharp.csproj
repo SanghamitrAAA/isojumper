@@ -40,14 +40,17 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Project\scripts\managers\LoadPersistentObjects.cs" />
      <Compile Include="Assets\_Project\scripts\managers\GameManager.cs" />
      <Compile Include="Assets\_Project\scripts\Platform.cs" />
      <Compile Include="Assets\_Project\scripts\IPlatform.cs" />
+     <Compile Include="Assets\_Project\scripts\Gecko_Script.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation.cs" />
      <Compile Include="Assets\_Project\scripts\managers\BoardManager.cs" />
      <Compile Include="Assets\_Project\scripts\Square.cs" />
+     <Compile Include="Assets\_Project\scripts\Timer.cs" />
      <Compile Include="Assets\_Project\scripts\managers\CameraManager.cs" />
+     <Compile Include="Assets\_Project\scripts\BackgroundColor.cs" />
+     <Compile Include="Assets\_Project\scripts\Rotation_New.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2022.2.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

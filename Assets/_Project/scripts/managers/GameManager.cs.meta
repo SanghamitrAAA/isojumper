@@ -3,7 +3,8 @@ guid: dc8191c68ec898c4e8d695d5a087bed2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _geckoPrefab: {fileID: 1300461473403321694, guid: 437e72f777556cf4fb5c82c7e0ec4f2d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2802579665867469005}
   - component: {fileID: 8689702439724214844}
   - component: {fileID: 5824415067336804947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 631225325445956542}
   - {fileID: 2726242505503705521}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2802579665867469005
 Rigidbody:
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5735309304153577358}
   - component: {fileID: 1208242373624307603}
   - component: {fileID: 1250522069684949689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56d1abe2e1fc1846af221cb596bc124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformNormal: {fileID: 2100000, guid: 4ca39c10cdff74a45b22755df68b7f36, type: 2}
+  _platformNormal: {fileID: 2100000, guid: 900676cfb58ae6242afd7345ca940d5e, type: 2}
   _platformFlipped: {fileID: 2100000, guid: 4e461e17e094f284993873ef20f63b7e, type: 2}
   _platformRenderer: {fileID: 1208242373624307603}
   _flipSound: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 6843822155519042035}
   - component: {fileID: 5409289579994596318}
   - component: {fileID: 1002551802370939471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 2101203749977923812}
   - component: {fileID: 5566049623192967192}
   - component: {fileID: 6142813312437387212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 1434071427051757429}
   - component: {fileID: 1334373421551833376}
   - component: {fileID: 3915681744800729046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlatformLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

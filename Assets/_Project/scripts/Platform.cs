@@ -30,6 +30,12 @@ public class Platform : MonoBehaviour, IPlatform
     {
         _platformRenderer.material = Flipped ? _platformFlipped : _platformNormal;
     }
+
+    public void SetbackgroundColor()
+    {
+        //Camera.main.backgroundColor
+        
+    }
 }
 
 
