@@ -119,7 +119,7 @@ public class Gecko_Script : MonoBehaviour
     void ChangeFacing(Vector3 desiredFacing)
     {
         if (desiredFacing == BoardManager.NoChange) return;
-        Body.DORotate(desiredFacing, 0.2f).SetAutoKill();      
+        Body.Rotate(desiredFacing, 0.2f).SetAutoKill();      
     }
 
     void JumpOffEdge(Vector3 landingPosition)
