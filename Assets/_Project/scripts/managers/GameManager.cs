@@ -47,16 +47,15 @@ public class GameManager : MonoBehaviour
     
     public UnityEvent GameStateChanged = new UnityEvent();
     public UnityEvent LivesChanged = new UnityEvent();
-    public Transform gecko => _gecko.transform;
-    public BoardManager BoardManager => _boardManager;
+    //public Transform gecko => _gecko.transform;
+    //public BoardManager BoardManager => _boardManager;
 
     Transform _transform;
-    BoardManager _boardManager;
+    //BoardManager _boardManager;
     Vector3 _geckoSpawnPosition, _geckoSpawnRotation;
 
     //instantiate Prefab:
     //GameObject _gecko;
-    Gecko_Script _gecko;
 
     void Awake()
     {
@@ -68,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         _transform = transform;
-        _boardManager = GetComponent<BoardManager>();
+        //_boardManager = GetComponent<BoardManager>();
     }    
 
     void Start()
@@ -95,21 +94,21 @@ public class GameManager : MonoBehaviour
 
     void StartRound()
     {
-        SpawnGecko();
+        //SpawnGecko();
         GameState = GameStates.RoundStarted;
         // start game music
     }
 
-    void SpawnGecko()
-    {
-        if (!_gecko)
-        {
-            _gecko = Instantiate(_geckoPrefab, _transform).GetComponent<Gecko_Script>();
-            //_gecko = Instantiate(_geckoPrefab, _transform);
-        }
-        // method on Gecko to reset all its settings
-        _gecko.ResetGecko(_geckoSpawnPosition, _geckoSpawnRotation);
-    }
+    //void SpawnGecko()
+    //{
+    //    if (!_gecko)
+    //    {
+    //        _gecko = Instantiate(_geckoPrefab, _transform).GetComponent<Gecko_Script>();
+    //        //_gecko = Instantiate(_geckoPrefab, _transform);
+    //    }
+    //    // method on Gecko to reset all its settings
+    //    _gecko.ResetGecko(_geckoSpawnPosition, _geckoSpawnRotation);
+    //}
 
     void ReadyToPlay()
     {
@@ -118,22 +117,22 @@ public class GameManager : MonoBehaviour
         // set next extra life interval
         // reset score
         // reset Geckos position
-        ResetGeckoSpawnPosition();
+        //ResetGeckoSpawnPosition();
         GameState = GameStates.Ready;
     }
 
-    void ResetGeckoSpawnPosition(bool useLastPosition = false)
-    {
-        if (useLastPosition)
-        {
-            _geckoSpawnPosition = _gecko.transform.position;
-            _geckoSpawnRotation = _gecko.Body.eulerAngles;
-            return;
-        }
-
-        _geckoSpawnPosition = _geckoStartPosition;
-        _geckoSpawnRotation = _geckoStartRotation;
-    }
+    //void ResetGeckoSpawnPosition(bool useLastPosition = false)
+    //{
+    //    if (useLastPosition)
+    //    {
+    //        _geckoSpawnPosition = _gecko.transform.position;
+    //        _geckoSpawnRotation = _gecko.Body.eulerAngles;
+    //        return;
+    //    }
+//
+    //    _geckoSpawnPosition = _geckoStartPosition;
+    //    _geckoSpawnRotation = _geckoStartRotation;
+    //}
 
     public void PlayerDied()
     {

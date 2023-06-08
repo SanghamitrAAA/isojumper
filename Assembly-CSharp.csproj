@@ -41,16 +41,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Project\characters\PlayerInput.cs" />
+     <Compile Include="Assets\_Project\scripts\Platforms.cs" />
      <Compile Include="Assets\_Project\scripts\managers\GameManager.cs" />
-     <Compile Include="Assets\_Project\scripts\Platform.cs" />
      <Compile Include="Assets\_Project\scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\_Project\scripts\IPlatform.cs" />
-     <Compile Include="Assets\_Project\scripts\Gecko_Script.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation.cs" />
-     <Compile Include="Assets\_Project\scripts\managers\BoardManager.cs" />
-     <Compile Include="Assets\_Project\scripts\Square.cs" />
      <Compile Include="Assets\_Project\scripts\Timer.cs" />
-     <Compile Include="Assets\_Project\scripts\managers\CameraManager.cs" />
      <Compile Include="Assets\_Project\scripts\BackgroundColor.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation_New.cs" />
     <Reference Include="UnityEngine">
@@ -304,9 +299,6 @@
     </Reference>
     <Reference Include="ReportGeneratorMerged">
         <HintPath>C:\Users\2578932\Desktop\rotation\Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-        <HintPath>C:\Users\2578932\Desktop\rotation\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>C:\Users\2578932\Desktop\rotation\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -760,10 +752,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{5a12f34a-4698-bcf0-c026-b4431d867e4d}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

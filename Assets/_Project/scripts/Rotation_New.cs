@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using DG.Tweening;
 
 public class Rotation_New : MonoBehaviour
 {

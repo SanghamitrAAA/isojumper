@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6100901101396204284}
   - component: {fileID: 2802579665867469005}
   - component: {fileID: 8689702439724214844}
-  - component: {fileID: 5824415067336804947}
   m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
@@ -107,20 +106,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5824415067336804947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155608950165783428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48604f56d9ce554f94a2ed3b98d3fd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _squareMaterial: {fileID: 2100000, guid: dbeaba6148fbad940b5aeae8f1fbfcf5, type: 2}
-  _squareRenderer: {fileID: 1002551802370939471}
 --- !u!1 &1341293788888545723
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +117,7 @@ GameObject:
   - component: {fileID: 2919708726253025383}
   - component: {fileID: 5735309304153577358}
   - component: {fileID: 1208242373624307603}
-  - component: {fileID: 1250522069684949689}
+  - component: {fileID: 6150168532707633859}
   m_Layer: 6
   m_Name: PlatformUp
   m_TagString: Untagged
@@ -205,7 +190,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1250522069684949689
+--- !u!114 &6150168532707633859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56d1abe2e1fc1846af221cb596bc124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformNormal: {fileID: 2100000, guid: 900676cfb58ae6242afd7345ca940d5e, type: 2}
-  _platformFlipped: {fileID: 2100000, guid: 4e461e17e094f284993873ef20f63b7e, type: 2}
-  _platformRenderer: {fileID: 1208242373624307603}
+  _platformNormal: {fileID: 0}
+  _platformFlipped: {fileID: 0}
+  _platformRenderer: {fileID: 0}
   _flipSound: {fileID: 0}
 --- !u!1 &2199958742389635150
 GameObject:
@@ -315,7 +300,7 @@ GameObject:
   - component: {fileID: 2726242505503705521}
   - component: {fileID: 2101203749977923812}
   - component: {fileID: 5566049623192967192}
-  - component: {fileID: 6142813312437387212}
+  - component: {fileID: 6268710548144231401}
   m_Layer: 6
   m_Name: PlatformRight
   m_TagString: Untagged
@@ -388,7 +373,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6142813312437387212
+--- !u!114 &6268710548144231401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,9 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56d1abe2e1fc1846af221cb596bc124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformNormal: {fileID: 2100000, guid: e9be71d4110580e4d820c669a355ae33, type: 2}
-  _platformFlipped: {fileID: 2100000, guid: 3a965e90e2ca16f4189d4ffce19b3d01, type: 2}
-  _platformRenderer: {fileID: 5566049623192967192}
+  _platformNormal: {fileID: 0}
+  _platformFlipped: {fileID: 0}
+  _platformRenderer: {fileID: 0}
   _flipSound: {fileID: 0}
 --- !u!1 &8828134929915761711
 GameObject:
@@ -415,7 +400,7 @@ GameObject:
   - component: {fileID: 631225325445956542}
   - component: {fileID: 1434071427051757429}
   - component: {fileID: 1334373421551833376}
-  - component: {fileID: 3915681744800729046}
+  - component: {fileID: 7233218273485106002}
   m_Layer: 6
   m_Name: PlatformLeft
   m_TagString: Untagged
@@ -488,7 +473,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3915681744800729046
+--- !u!114 &7233218273485106002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56d1abe2e1fc1846af221cb596bc124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformNormal: {fileID: 2100000, guid: 34514852b4fc8b44f84ec1766e2c22fc, type: 2}
-  _platformFlipped: {fileID: 2100000, guid: c9a06389256a9ad4bb65b6e8c5fcf7d3, type: 2}
-  _platformRenderer: {fileID: 1334373421551833376}
+  _platformNormal: {fileID: 0}
+  _platformFlipped: {fileID: 0}
+  _platformRenderer: {fileID: 0}
   _flipSound: {fileID: 0}

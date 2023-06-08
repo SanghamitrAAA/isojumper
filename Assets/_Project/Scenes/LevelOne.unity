@@ -385,7 +385,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5824415067336804947, guid: cd18f61d52e7b7949a572485e702527d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1075,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8191c68ec898c4e8d695d5a087bed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _geckoPrefab: {fileID: 1300461473403321694, guid: 437e72f777556cf4fb5c82c7e0ec4f2d, type: 3}
+  _geckoPrefab: {fileID: 0}
   _geckoStartPosition: {x: 0, y: 0, z: 0}
   _geckoStartRotation: {x: 0, y: 0, z: 0}
   GameStateChanged:
@@ -1956,6 +1957,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db823ca7e088134b86ebcb637a8ff89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _platforms: []
+  _transform: {fileID: 0}
+  _downDirections: []
+  _upDirections: []
 --- !u!4 &1990113411
 Transform:
   m_ObjectHideFlags: 0
