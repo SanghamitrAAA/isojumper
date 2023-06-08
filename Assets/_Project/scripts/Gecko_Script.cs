@@ -26,7 +26,6 @@ public class Gecko_Script : MonoBehaviour
         Body = _transform.GetChild(0);
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-        
     }
 
     void Update()
@@ -176,5 +175,7 @@ public class Gecko_Script : MonoBehaviour
         //play jump sound
         _transform.DOJump(landingPosition, 4, 1, 0.5f).SetEase(Ease.Linear).SetAutoKill();
     }
+
+    
 
 }

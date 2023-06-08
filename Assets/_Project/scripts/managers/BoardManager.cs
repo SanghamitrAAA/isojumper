@@ -30,11 +30,6 @@ public class BoardManager : MonoBehaviour
 
     public int UnFlippedPlatforms => _platforms.Count(p => !p.GetComponent<IPlatform>().Flipped);
 
-    public static readonly Vector3 NoChange = Vector3.up;
-    public static readonly Vector3 NorthEast = Vector3.zero;
-    public static readonly Vector3 NorthWest = new Vector3(0, 270, 0);
-    public static readonly Vector3 SouthEast = new Vector3(0, 90, 0);
-    public static readonly Vector3 SouthWest = new Vector3(0, 100, 0);
 
 
     void ResetPlatforms()

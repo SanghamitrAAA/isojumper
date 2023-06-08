@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     void ReadyToPlay()
     {
-        // star music
+        // start music
         Lives = 3;
         // set next extra life interval
         // reset score
@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour
         // todo
         GameState = GameStates.PlayerDied;
         // Change Background Color when dead
-        //cam.backgroundColor = Color.Lerp(color1, color2, color3, _rotationTimer);
     }
 }
 
