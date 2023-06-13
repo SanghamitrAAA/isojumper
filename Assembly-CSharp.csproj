@@ -40,12 +40,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.19f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Project\scripts\ObstacleDestroyer.cs" />
+     <Compile Include="Assets\_Project\scripts\TimedObstacleSpawn.cs" />
      <Compile Include="Assets\_Project\characters\PlayerInput.cs" />
      <Compile Include="Assets\_Project\scripts\Platforms.cs" />
      <Compile Include="Assets\_Project\scripts\managers\GameManager.cs" />
-     <Compile Include="Assets\_Project\scripts\PlayerMovement.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation.cs" />
+     <Compile Include="Assets\_Project\scripts\CharacterJump.cs" />
      <Compile Include="Assets\_Project\scripts\Timer.cs" />
+     <Compile Include="Assets\_Project\scripts\NewCharMovement.cs" />
      <Compile Include="Assets\_Project\scripts\BackgroundColor.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation_New.cs" />
     <Reference Include="UnityEngine">

@@ -1,12 +1,19 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+//using UnityEngine;SceneManagment;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; 
-    [SerializeField] GameObject _geckoPrefab;
-    [SerializeField] Vector3 _geckoStartPosition, _geckoStartRotation;
+    //[SerializeField] GameObject _geckoPrefab;
+    //[SerializeField] Vector3 _geckoStartPosition, _geckoStartRotation;
+
+    //for Level 2
+    public static int remainingTiles = 45;
+
+    //Transform _transform;
+    //Vector3 _geckoSpawnPosition, _geckoSpawnRotation;
 
     public enum GameStates
     {
@@ -17,8 +24,9 @@ public class GameManager : MonoBehaviour
         LevelComplete,
         Gameover,
     }
-
+    //TestMovement _gecko;
     GameStates _gameState;
+    Timer _timer;
     public GameStates GameState
     {
         get => _gameState;
@@ -48,14 +56,6 @@ public class GameManager : MonoBehaviour
     public UnityEvent GameStateChanged = new UnityEvent();
     public UnityEvent LivesChanged = new UnityEvent();
     //public Transform gecko => _gecko.transform;
-    //public BoardManager BoardManager => _boardManager;
-
-    Transform _transform;
-    //BoardManager _boardManager;
-    Vector3 _geckoSpawnPosition, _geckoSpawnRotation;
-
-    //instantiate Prefab:
-    //GameObject _gecko;
 
     void Awake()
     {
@@ -66,8 +66,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        _transform = transform;
-        //_boardManager = GetComponent<BoardManager>();
+        //_transform = transform;
     }    
 
     void Start()
@@ -82,6 +81,14 @@ public class GameManager : MonoBehaviour
         {
             StartGame();
         }
+        if (remainingTiles == 0)
+        {
+            Debug.Log("You win");
+            // play level clear video
+
+            //MOVE TO NEXT LEVEL
+            //StartCoroutine(loadNextLevel());
+        }
     }
 
     void StartGame()
@@ -94,21 +101,10 @@ public class GameManager : MonoBehaviour
 
     void StartRound()
     {
-        //SpawnGecko();
+        // play "3,2,1 go!" video
         GameState = GameStates.RoundStarted;
         // start game music
     }
-
-    //void SpawnGecko()
-    //{
-    //    if (!_gecko)
-    //    {
-    //        _gecko = Instantiate(_geckoPrefab, _transform).GetComponent<Gecko_Script>();
-    //        //_gecko = Instantiate(_geckoPrefab, _transform);
-    //    }
-    //    // method on Gecko to reset all its settings
-    //    _gecko.ResetGecko(_geckoSpawnPosition, _geckoSpawnRotation);
-    //}
 
     void ReadyToPlay()
     {
@@ -121,24 +117,20 @@ public class GameManager : MonoBehaviour
         GameState = GameStates.Ready;
     }
 
-    //void ResetGeckoSpawnPosition(bool useLastPosition = false)
-    //{
-    //    if (useLastPosition)
-    //    {
-    //        _geckoSpawnPosition = _gecko.transform.position;
-    //        _geckoSpawnRotation = _gecko.Body.eulerAngles;
-    //        return;
-    //    }
-//
-    //    _geckoSpawnPosition = _geckoStartPosition;
-    //    _geckoSpawnRotation = _geckoStartRotation;
-    //}
-
     public void PlayerDied()
     {
         // todo
         GameState = GameStates.PlayerDied;
         // Change Background Color when dead
+        // play gameover video
     }
+
+    //INSTANCIATE BUFFER TO LOAD NEXT LEVEL
+    //IEnumerator loadNextLevel()
+    //{
+    //    yield return new WaitForSeconds(5);
+    //    remainingTiles = 45; //(add more for every level)
+    //    SceneManager.LoadScene("level1");
+    //}
 }
 

@@ -21,7 +21,7 @@ public class Rotation_New : MonoBehaviour
         //this.transform.LookAt(new Vector3(0f,0f,0f));
     }
 
-    public void RotateCubes()
+    public void RotateCamera()
     {
         //new Vector3(0f, 0f, 120f * 2f);
         transform.Rotate(new Vector3(0f, 0f, 120f));
@@ -37,7 +37,7 @@ public class Rotation_New : MonoBehaviour
 
             if (_rotationTimer <= 0f)
             {
-                RotateCubes();
+                RotateCamera();
                 _rotationTimer = 5f; // Reset the timer
             }
         }

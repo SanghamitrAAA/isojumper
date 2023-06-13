@@ -1,43 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[System.Serializable]
+//[System.Serializable]
 public class Platforms : MonoBehaviour
 {
-    [SerializeField] Material _platformNormal; 
-    [SerializeField] Material _platformFlipped;
-    [SerializeField] Renderer _platformRenderer;
-    [SerializeField] AudioClip _flipSound;
+    public Material _platformNormal; 
+    public Material _platformFlipped;
+    public Renderer _platformRenderer;
+    public AudioClip _flipSound;
 
-    public bool Flipped { get; private set; }
+    public int colorStatus = 1;
 
-    public void SetFlippedState(bool flipped)
-    {
-        //Flipped = flipped;
-        SetPlatformMaterial();
-        if (flipped)
-        {
-            // play audio
-            // add points to score
-        }
-        // tell game manager we flipped the platform
-    }
-    
-    public void SetPlatformColor(Color color)
-    {
-        _platformRenderer.material.color = color;
-    }    
-
-    void SetPlatformMaterial()
-    {
-        _platformRenderer.material = Flipped ? _platformFlipped : _platformNormal;
-    }
    
     // Update is called once per frame
     void Update()
     {
         //SetPlatformColor();
         //SetFlippedState();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            colorStatus -=1;
+            if (colorStatus == 0)
+            {
+                GetComponent<Renderer>().material = _platformFlipped;
+                GameManager.remainingTiles -= 1;
+            }
+
+            //set colorstatus back to zero, so code above doesn't get executed
+            if (colorStatus<0)
+            {
+                colorStatus = 0;
+            }
+        }
+
+        if(other.gameObject.tag == "Obstacle")
+        {
+            colorStatus += 1;
+            if (colorStatus == 1)
+            {
+                GetComponent<MeshRenderer>().material = _platformNormal;
+                GameManager.remainingTiles += 1;
+            }
+            if (colorStatus >  1)
+            {
+                colorStatus = 1;
+            }
+        }
     }
 }

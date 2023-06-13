@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
     public int remainingDuration;
     private float fillAmountPerSecond;
 
+    GameManager gamemanager;
+
 
     private void Start()
     {
@@ -29,12 +31,18 @@ public class Timer : MonoBehaviour
     {
         while (remainingDuration >= 0)
         {
+            if(remainingDuration == 0)
+            {
+                //GameManager.PlayerDied();
+            }
             uiCountdown.text = remainingDuration.ToString();
             float fillAmount = remainingDuration * fillAmountPerSecond;
             uiTimer.fillAmount = fillAmount;
             remainingDuration--;
             yield return new WaitForSeconds(1f);
         }
+
+
         //if (remainingDuration <= 1)
         //{
         //    checkpoint = GetComponent<onRotate>();
