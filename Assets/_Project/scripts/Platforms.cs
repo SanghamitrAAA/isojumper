@@ -28,12 +28,12 @@ public class Platforms : MonoBehaviour
             colorStatus -=1;
             if (colorStatus == 0)
             {
-                GetComponent<Renderer>().material = _platformFlipped;
+                GetComponent<MeshRenderer>().material = _platformFlipped;
                 GameManager.remainingTiles -= 1;
             }
 
             //set colorstatus back to zero, so code above doesn't get executed
-            if (colorStatus<0)
+            if (colorStatus < 0)
             {
                 colorStatus = 0;
             }

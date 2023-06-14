@@ -7,42 +7,53 @@ using UnityEngine;
 public class NewCharMovement : MonoBehaviour
 {
     //[SerializeField] float moveSpeed = 4f;
-    [SerializeField] float jumpForceConst = 20f;
+    [SerializeField] float jumpForceConst = 5f;
+
+    // CHECK FOR MID AIR JUMPS (only jump when feet are in radius of sphere)
+    // CUBES IS SET TO LAYER "FloorLayer"
+    [SerializeField] private Transform FeetTransform;
+    [SerializeField] private LayerMask FloorMask;
+    public float Speed;
     public Rigidbody rb;
-    public Animator animator;
-    // check if player is in mid jump to avoid double jumps in the air
-    // -> check if character is jumping / check if character is standing on tile
-    public string midJump = "n";
+    private Animator animator;
+
     //private bool isJumping = false;
     //public GameObject ground;
     // sees if it is on ground or not
     //float offset;
     //private bool isGrounded = true;
 
+    //FOR SMOOTH CHAR ROTATION
+    float rotateFloat;
+    float Angle;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = gameObject.GetComponent<Animator>();
-        //offset = (transform.position.y - ground.transform.position.y)+1;
+        animator = GetComponent<Animator>();
     }
 
     void JumpA()
-    {
-        //midJump = "y";        
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("a")))
-        {
-            animator.SetBool("Jump", true);
-            rb.AddForce(transform.up * jumpForceConst, ForceMode.Impulse);
-            transform.position += new Vector3(0, -3, -3);
-            TriggerLandingAnimation();
-            Debug.Log("space for a");
-        }
+    {     
+        //if (Physics.CheckSphere(FeetTransform.position, 0.01f, FloorMask))
+        //{
+        //    //Check if characters feet (gameObject) are on cube - prevents MidAirJumps
+        //    if (Input.GetKeyDown("space") && (!Input.GetKeyDown("a")))
+        //    {
+        //        animator.SetTrigger("Jump");
+        //        Vector3 MoveVector = new Vector3(0, -3, -3) * Speed;
+        //        //transform.position += MoveVector;
+        //        rb.velocity += new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
+        //        rb.AddForce(Vector3.up * jumpForceConst, ForceMode.Impulse);
+        //        TriggerLandingAnimation();
+        //        Debug.Log("space for a");
+        //    } 
+        //}
     }
 
     void JumpD()
     {
-        midJump = "y";
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("d")) && (midJump=="n"))
+        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("d")))
         {
             transform.position += new Vector3(3, -3, 0);
             Debug.Log("space for d");
@@ -51,7 +62,6 @@ public class NewCharMovement : MonoBehaviour
 
     void JumpE()
     {
-        midJump = "y";
         if (Input.GetKeyDown("space") && (!Input.GetKeyDown("e")))
         {
             transform.position += new Vector3(0,3,3);
@@ -62,20 +72,21 @@ public class NewCharMovement : MonoBehaviour
 
     void JumpW()
     {
-        midJump = "y";
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("w")) && (midJump=="n"))
+        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("w")))
         {
         transform.position += new Vector3(-3,3,0);
         Debug.Log("space for w");
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //A
         if (Input.GetKey("a"))
         {
-            transform.eulerAngles = new Vector3(0,0,0);
+            float Angle = 0;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.05f);
+            transform.rotation = Quaternion.Euler(0, Smooth, 0);
             Debug.Log("rotate for a");
             JumpA();
             //play jump sound
@@ -83,41 +94,40 @@ public class NewCharMovement : MonoBehaviour
         //W
         if (Input.GetKey("w"))
         {
-            transform.eulerAngles = new Vector3(0,90,0);
+            float Angle = 90;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            transform.rotation = Quaternion.Euler(0, Smooth, 0);
             Debug.Log("rotate for w");
             JumpW();
         }
         
         //D
-        if (Input.GetKey("d"))
+        else if (Input.GetKey("d"))
         {
-            transform.eulerAngles = new Vector3(0,-90,0);
+            float Angle = 270;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            transform.rotation = Quaternion.Euler(0, Smooth, 0);
             JumpD();
         }
 
         //E
-        if (Input.GetKey("e"))
+        else if (Input.GetKey("e"))
         {
-            transform.eulerAngles = new Vector3(0,-180,0);
+            float Angle = 180;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            transform.rotation = Quaternion.Euler(0, Smooth, 0);
             JumpE();
         }
+
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        StartCoroutine(delayMove());
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //}
 
-    //Prevents midjump jumps / can only jump when landed
-    IEnumerator delayMove()
-    {
-        yield return new WaitForSeconds(.05f);
-        midJump = "n";
-    }
 
     void TriggerLandingAnimation()
     {
-        animator.SetBool("Jump", false);
         animator.SetTrigger("Land");
         //play landing sound
     }

@@ -42,7 +42,6 @@
   <ItemGroup>
      <Compile Include="Assets\_Project\scripts\ObstacleDestroyer.cs" />
      <Compile Include="Assets\_Project\scripts\TimedObstacleSpawn.cs" />
-     <Compile Include="Assets\_Project\characters\PlayerInput.cs" />
      <Compile Include="Assets\_Project\scripts\Platforms.cs" />
      <Compile Include="Assets\_Project\scripts\managers\GameManager.cs" />
      <Compile Include="Assets\_Project\scripts\Rotation.cs" />

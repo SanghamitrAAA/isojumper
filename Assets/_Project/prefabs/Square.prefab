@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8689702439724214844}
   - component: {fileID: 6486490637398078409}
   - component: {fileID: 7819824585414407986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Cube
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1208242373624307603}
   - component: {fileID: 3523216163598558512}
   - component: {fileID: 2752351859621956093}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlatformUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 6843822155519042035}
   - component: {fileID: 5409289579994596318}
   - component: {fileID: 1002551802370939471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CenterCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 5566049623192967192}
   - component: {fileID: 8051655636672490783}
   - component: {fileID: 7431499235721113442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlatformRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 1334373421551833376}
   - component: {fileID: 2096410418392369730}
   - component: {fileID: 2074208709031476739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlatformLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
