@@ -12,43 +12,34 @@ public class TimedObstacleSpawn : MonoBehaviour
     private bool _isMoving;
     public GameObject obstacle;
     public bool stopSpawning;
-    public float ObstacleForce;
-    //public float spawnTime;
-    //public float spawnDelay;
-
-    //float obstacleYSpeed, obstacleZSpeed;
-    //public float obstacleSpeed;
-    // Start is called before the first frame update
+    public Rigidbody rb;
+    public float spawnTime;
+    public float spawnDelay;
+    // float obstacleYSpeed, obstacleZSpeed;
+    // public float obstacleSpeed;
+    
     void Start()
     {
-        //_isMoving = true;
+        _isMoving = true;
+        rb = obstacle.GetComponent<Rigidbody>();
         // invove repeating call
-        //InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         //obstacleYSpeed = 1 * Time.fixedDeltaTime;
         //obstacleZSpeed = 1 * Time.fixedDeltaTime;
-        
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnObject();
-        }
-    }
-
-    // Update is called once per frame
     public void SpawnObject()
     {
         Instantiate(obstacle, FirePlace.position, FirePlace.rotation);
-        Rigidbody rb = obstacle.GetComponent<Rigidbody>();
-        rb.AddForce(FirePlace.forward * ObstacleForce, ForceMode.Impulse);
-        //transform.position = new Vector3(transform.position.y + obstacleYSpeed, transform.position.z + obstacleZSpeed);
-
-        //if (stopSpawning)
-        //{
-        //    CancelInvoke("SpawnObject"); 
-        //}
+        if (stopSpawning)
+        {
+            CancelInvoke("SpawnObject"); 
+        }
     }
+
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    
+    //}
     
 }

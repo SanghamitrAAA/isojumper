@@ -99,7 +99,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.07, y: 4.01, z: 3.95}
+  m_Size: {x: 3.98, y: 4.01, z: 3.95}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &7819824585414407986
 MeshCollider:
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1208242373624307603}
   - component: {fileID: 3523216163598558512}
   - component: {fileID: 2752351859621956093}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlatformUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,11 +240,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.7, y: 3.7, z: 2.75}
+  m_Size: {x: 3.7, y: 3.7, z: 2.4}
   m_Center: {x: 0.39285704, y: -0.3928572, z: -0.21428578}
 --- !u!1 &2199958742389635150
 GameObject:
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 6843822155519042035}
   - component: {fileID: 5409289579994596318}
   - component: {fileID: 1002551802370939471}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CenterCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 5566049623192967192}
   - component: {fileID: 8051655636672490783}
   - component: {fileID: 7431499235721113442}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlatformRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,11 +446,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.7, y: 2.75, z: 3.7}
+  m_Size: {x: 3.7, y: 2.4, z: 3.7}
   m_Center: {x: 1, y: -1.4210855e-14, z: 1.0000002}
 --- !u!1 &8828134929915761711
 GameObject:
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 1334373421551833376}
   - component: {fileID: 2096410418392369730}
   - component: {fileID: 2074208709031476739}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlatformLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,9 +569,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.75, y: 3.7, z: 3.7}
+  m_Size: {x: 2.4, y: 3.7, z: 3.7}
   m_Center: {x: 0, y: -1.0000002, z: 1.0000002}

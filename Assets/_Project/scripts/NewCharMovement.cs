@@ -6,129 +6,182 @@ using UnityEngine;
 // NOT 2: Create one basic spawner for every side / direction
 public class NewCharMovement : MonoBehaviour
 {
-    //[SerializeField] float moveSpeed = 4f;
-    [SerializeField] float jumpForceConst = 5f;
+    [SerializeField] float jumpForceConst = 20f;
 
     // CHECK FOR MID AIR JUMPS (only jump when feet are in radius of sphere)
     // CUBES IS SET TO LAYER "FloorLayer"
     [SerializeField] private Transform FeetTransform;
     [SerializeField] private LayerMask FloorMask;
     public float Speed;
+
+    //Init Rigidbody and Animator
     public Rigidbody rb;
     private Animator animator;
 
-    //private bool isJumping = false;
-    //public GameObject ground;
-    // sees if it is on ground or not
-    //float offset;
-    //private bool isGrounded = true;
+    //JUMPING
+    private Vector3 endPosition;
+    private Vector3 startPosition;
+    private float desiredDuration = 2f;
+    private float elapsedTime;
+    public string jumpState;
 
     //FOR SMOOTH CHAR ROTATION
     float rotateFloat;
-    float Angle;
+    int Angle;
+
+    float timer=0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.AddForce(Vector3.up * jumpForceConst, ForceMode.Impulse);
         animator = GetComponent<Animator>();
+        animator.SetBool("Jump", false);
+        startPosition = transform.position;
     }
 
-    void JumpA()
-    {     
+    void TriggerLandingAnimation()
+    {
+        animator.SetBool("Jump", false);
+        animator.SetTrigger("Land");
+        //play landing sound
+    }
+
+    IEnumerator JumpCoroutine(Vector3 endPosition)
+    {
+        float jumpHeight = 2.0f; 
+        float jumpDuration = 0.5f; 
+
+        Vector3 startPosition = transform.position;
+        Vector3 peakPosition = (startPosition + endPosition) * 0.5f;
+        peakPosition.y += jumpHeight + 5f; //to control the curve
+
+        float time = 0f;
+
+        while (time < jumpDuration)
+        {
+            time += Time.deltaTime;
+
+            float t = time / jumpDuration;
+
+            //quadratic equation to create a parabolic trajectory
+            Vector3 position = MathParabola(startPosition, peakPosition, endPosition, t);
+
+            //update character's position
+            transform.position = position;
+
+            yield return null;
+        }
+
+        //character reaches the exact end position
+        transform.position = endPosition;
+
+        //play sounds
+    }
+
+    //quadratic equation to create a parabolic trajectory
+    Vector3 MathParabola(Vector3 start, Vector3 peak, Vector3 end, float t)
+    {
+        float u = 1f - t;
+        float tt = t * t;
+        float uu = u * u;
+
+        Vector3 position = (uu * start) + (2f * u * t * peak) + (tt * end);
+        return position;
+    }
+
+    //OLD
+    //void JumpA()
+    //{
         //if (Physics.CheckSphere(FeetTransform.position, 0.01f, FloorMask))
         //{
-        //    //Check if characters feet (gameObject) are on cube - prevents MidAirJumps
-        //    if (Input.GetKeyDown("space") && (!Input.GetKeyDown("a")))
-        //    {
-        //        animator.SetTrigger("Jump");
-        //        Vector3 MoveVector = new Vector3(0, -3, -3) * Speed;
-        //        //transform.position += MoveVector;
-        //        rb.velocity += new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
-        //        rb.AddForce(Vector3.up * jumpForceConst, ForceMode.Impulse);
-        //        TriggerLandingAnimation();
-        //        Debug.Log("space for a");
-        //    } 
         //}
-    }
+    //}
 
-    void JumpD()
+    void Update()
     {
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("d")))
-        {
-            transform.position += new Vector3(3, -3, 0);
-            Debug.Log("space for d");
-        }
-    }
-
-    void JumpE()
-    {
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("e")))
-        {
-            transform.position += new Vector3(0,3,3);
-            Debug.Log("space for e");
-        }
-    }
-
-
-    void JumpW()
-    {
-        if (Input.GetKeyDown("space") && (!Input.GetKeyDown("w")))
-        {
-        transform.position += new Vector3(-3,3,0);
-        Debug.Log("space for w");
-        }
-    }
-
-    void FixedUpdate()
-    {
+        elapsedTime += Time.deltaTime;
+        // make rotation with lerp to make sure it's completely rotated
+        float charRotationSpeed = 0.02f;
         //A
         if (Input.GetKey("a"))
         {
-            float Angle = 0;
-            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.05f);
+            int Angle = 0;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat,charRotationSpeed);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
             Debug.Log("rotate for a");
-            JumpA();
+            jumpState = "A";
             //play jump sound
         }
         //W
         if (Input.GetKey("w"))
         {
-            float Angle = 90;
-            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            int Angle = 90;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, charRotationSpeed);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
             Debug.Log("rotate for w");
-            JumpW();
+            jumpState = "W";
         }
         
         //D
-        else if (Input.GetKey("d"))
+        if (Input.GetKey("d"))
         {
-            float Angle = 270;
-            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            int Angle = 270;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, charRotationSpeed);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
-            JumpD();
+            Debug.Log("rotate for d");
+            jumpState = "D";
         }
 
         //E
-        else if (Input.GetKey("e"))
+        if (Input.GetKey("e"))
         {
-            float Angle = 180;
-            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, 0.1f);
+            int Angle = 180;
+            float Smooth = Mathf.SmoothDamp(transform.eulerAngles.y , Angle, ref rotateFloat, charRotationSpeed);
             transform.rotation = Quaternion.Euler(0, Smooth, 0);
-            JumpE();
+            Debug.Log("rotate for e");
+            jumpState = "E";
         }
 
-    }
-
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //}
-
-
-    void TriggerLandingAnimation()
-    {
-        animator.SetTrigger("Land");
-        //play landing sound
+        if (Input.GetKeyDown("space"))
+        {
+            float percentageComplete = elapsedTime / desiredDuration;
+            
+            if (jumpState == "A")
+            {   animator.SetBool("Jump", true);
+                Vector3 jumpDirection = new Vector3(0, -3, -3);
+                Vector3 endPosition = transform.position + jumpDirection;
+                StartCoroutine(JumpCoroutine(endPosition));
+                TriggerLandingAnimation();
+                Debug.Log("space for a");
+            }
+            if (jumpState == "D")
+            {
+                animator.SetBool("Jump", true);
+                Vector3 jumpDirection = new Vector3(3, -3, 0);
+                Vector3 endPosition = transform.position + jumpDirection;
+                StartCoroutine(JumpCoroutine(endPosition));
+                TriggerLandingAnimation();
+                Debug.Log("space for d");
+            }
+            if (jumpState == "E")
+            {
+                animator.SetBool("Jump", true);
+                Vector3 jumpDirection = new Vector3(0, 3, 3);
+                Vector3 endPosition = transform.position + jumpDirection;
+                StartCoroutine(JumpCoroutine(endPosition));
+                TriggerLandingAnimation();
+                Debug.Log("space for e");
+            }
+            if (jumpState == "W")
+            {
+                animator.SetBool("Jump", true);
+                Vector3 jumpDirection = new Vector3(-3, 3, 0);
+                Vector3 endPosition = transform.position + jumpDirection;
+                StartCoroutine(JumpCoroutine(endPosition));
+                TriggerLandingAnimation();
+                Debug.Log("space for w");
+            }
+        }
     }
 }

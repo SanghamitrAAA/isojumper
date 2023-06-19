@@ -21,14 +21,15 @@ public class Platforms : MonoBehaviour
         //SetFlippedState();
     }
 
-    private void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            colorStatus -=1;
+            colorStatus -= 1;
             if (colorStatus == 0)
             {
                 GetComponent<MeshRenderer>().material = _platformFlipped;
+                //play flipping sound
                 GameManager.remainingTiles -= 1;
             }
 
@@ -38,19 +39,20 @@ public class Platforms : MonoBehaviour
                 colorStatus = 0;
             }
         }
-
-        if(other.gameObject.tag == "Obstacle")
-        {
-            colorStatus += 1;
-            if (colorStatus == 1)
-            {
-                GetComponent<MeshRenderer>().material = _platformNormal;
-                GameManager.remainingTiles += 1;
-            }
-            if (colorStatus >  1)
-            {
-                colorStatus = 1;
-            }
-        }
+        //if(other.gameObject.tag == "Obstacle")
+        //{
+        //    colorStatus += 1;
+        //    if (colorStatus == 1)
+        //    {
+        //        GetComponent<MeshRenderer>().material = _platformNormal;
+        //        GameManager.remainingTiles += 1;
+        //    }
+        //    if (colorStatus >  1)
+        //    {
+        //        colorStatus = 1;
+        //    }
+        //}
     }
+
+
 }

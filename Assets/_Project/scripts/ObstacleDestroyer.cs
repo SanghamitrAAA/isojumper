@@ -5,7 +5,14 @@ using UnityEngine;
 public class ObstacleDestroyer : MonoBehaviour
 {
     public float lifeTime = 10f;
+    public Rigidbody rb;
 
+    void Start(){
+        rb = transform.GetComponent<Rigidbody>();
+        //Vector3 MoveVector = new Vector3(0, 3, 3);
+        //rb.velocity = new Vector3(0, 3, 0) * Speed;
+        rb.AddForce(Vector3.back *40,ForceMode.Impulse);
+    }
     // Update is called once per frame
     void Update()
     {
